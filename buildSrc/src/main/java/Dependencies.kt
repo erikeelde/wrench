@@ -12,32 +12,34 @@ object Versions {
 
     const val arch_core = "1.1.1"
     const val junit = "4.13-beta-2"
-    const val mockito = "2.24.5"
+    const val mockito = "2.25.1"
     const val mockito_all = "1.10.19"
     const val dexmaker = "2.2.0"
     const val timber = "4.7.0"
-    const val android_gradle_plugin = "3.5.0-alpha06"
+    const val android_gradle_plugin = "3.5.0-alpha07"
     const val hamcrest = "1.3"
     const val kotlin = "1.3.21"
     const val work = "1.0.0-alpha01"
-    const val navigation = "1.0.0-rc01"
+    const val navigation = "1.0.0"
     const val kotlin_coroutines = "1.1.1"
 
-    const val room = "2.1.0-alpha04"
-    const val lifecycle = "2.1.0-alpha02"
+    const val room = "2.1.0-alpha05"
+    const val room_coroutine = "2.1.0-alpha04"
+    const val lifecycle = "2.1.0-alpha03"
     const val paging = "2.1.0"
-    const val atsl = "1.1.2-alpha01"
-    const val test = "1.1.1-alpha01"
+    const val atsl = "1.1.2-alpha02"
+    const val test = "1.1.1-alpha02"
+    const val truth = "1.2.0-alpha02"
     const val espresso = "3.1.0-beta02"
 
-    const val robolectric = "4.2"
+    const val robolectric = "4.3-alpha-1"
     const val constraint_layout = "2.0.0-alpha3"
-    const val appcompat = "1.1.0-alpha02"
+    const val appcompat = "1.1.0-alpha03"
     const val cardview = "1.0.0"
     const val coordinatorlayout = "1.1.0-alpha01"
-    const val recyclerview = "1.1.0-alpha02"
-    const val material = "1.1.0-alpha03"
-    const val annotation = "1.1.0-alpha01"
+    const val recyclerview = "1.1.0-alpha03"
+    const val material = "1.1.0-alpha04"
+    const val annotation = "1.1.0-alpha02"
     const val koin = "1.0.2"
 }
 
@@ -46,7 +48,7 @@ object AndroidTestingSupportLibrary {
     const val rules = "androidx.test:rules:${Versions.atsl}"
     const val monitor = "androidx.test:monitor:${Versions.atsl}"
     const val core = "androidx.test:core:${Versions.test}"
-    const val truth = "androidx.test.ext:truth:${Versions.test}"
+    const val truth = "androidx.test.ext:truth:${Versions.truth}"
     const val junit = "androidx.test.ext:junit:${Versions.test}"
 }
 
@@ -67,7 +69,7 @@ object Espresso {
 
 object Room {
     const val runtime = "androidx.room:room-runtime:${Versions.room}"
-    const val coroutine = "androidx.room:room-coroutines:${Versions.room}"
+    const val coroutine = "androidx.room:room-coroutines:${Versions.room_coroutine}"
     const val compiler = "androidx.room:room-compiler:${Versions.room}"
     const val rxjava2 = "androidx.room:room-rxjava2:${Versions.room}"
     const val testing = "androidx.room:room-testing:${Versions.room}"
@@ -135,7 +137,7 @@ object Libs {
 
     const val junit = "junit:junit:${Versions.junit}"
 
-    const val stetho = "com.facebook.stetho:stetho:1.5.0"
+    const val stetho = "com.facebook.stetho:stetho:1.5.1"
 
 }
 
