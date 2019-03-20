@@ -36,6 +36,7 @@ object Versions {
     const val constraint_layout = "2.0.0-alpha3"
     const val appcompat = "1.1.0-alpha03"
     const val cardview = "1.0.0"
+    const val savestate = "1.0.0-alpha02"
     const val coordinatorlayout = "1.1.0-alpha01"
     const val recyclerview = "1.1.0-alpha03"
     const val material = "1.1.0-alpha04"
@@ -150,6 +151,7 @@ object Support {
     const val design = "com.google.android.material:material:${Versions.material}"
     const val v4 = "androidx.legacy:legacy-appcompat-v4:${Versions.appcompat}"
     const val core_utils = "androidx.legacy:legacy-appcompat-core-utils:${Versions.appcompat}"
+    const val savestate = "androidx.savedstate:savedstate${Versions.savestate}"
 }
 
 object Koin {
