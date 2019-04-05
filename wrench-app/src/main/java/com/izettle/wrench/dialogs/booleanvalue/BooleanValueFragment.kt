@@ -11,6 +11,8 @@ import androidx.lifecycle.Observer
 import com.izettle.wrench.R
 import kotlinx.android.synthetic.main.fragment_boolean_value.view.*
 import kotlinx.coroutines.ExperimentalCoroutinesApi
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.launch
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 @ExperimentalCoroutinesApi
@@ -62,11 +64,15 @@ class BooleanValueFragment : DialogFragment() {
         })
 
         view.revert.setOnClickListener {
-            viewModel.revertClick()
+            GlobalScope.launch {
+                viewModel.revertClick()
+            }
         }
 
         view.save.setOnClickListener {
-            viewModel.saveClick(view.value.isChecked.toString())
+            GlobalScope.launch {
+                viewModel.saveClick(view.value.isChecked.toString())
+            }
         }
 
         return AlertDialog.Builder(requireActivity())
@@ -75,11 +81,10 @@ class BooleanValueFragment : DialogFragment() {
     }
 
     private val checkedChangedListener = CompoundButton.OnCheckedChangeListener { _, isChecked ->
-        val myCounter = counter++
-        viewModel.checkedChanged(isChecked, myCounter)
+        GlobalScope.launch {
+            viewModel.checkedChanged(isChecked)
+        }
     }
-
-    var counter = 0
 
     companion object {
 

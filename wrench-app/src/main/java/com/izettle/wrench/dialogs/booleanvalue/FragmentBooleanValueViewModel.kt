@@ -16,6 +16,7 @@ constructor(private val configurationDao: WrenchConfigurationDao, private val co
     private val inputsLiveData = MediatorLiveData<Inputs>().apply {
         value = Inputs()
     }
+
     private val configurationIdLiveData = MutableLiveData<Long>()
     private val scopeIdLiveData = MutableLiveData<Long>()
 
@@ -50,7 +51,7 @@ constructor(private val configurationDao: WrenchConfigurationDao, private val co
                         viewEffects.value = Event(ViewEffect.Dismiss)
                     }
                     is ViewAction.CheckedChanged -> {
-                        viewState.value = reduce(viewState.value!!, PartialViewState.CheckChanged(viewAction.checked, viewAction.counter))
+                        viewState.value = reduce(viewState.value!!, PartialViewState.CheckChanged(viewAction.checked))
                     }
                 }
             }
@@ -99,40 +100,44 @@ constructor(private val configurationDao: WrenchConfigurationDao, private val co
                 previousState.copy(reverting = true)
             }
             is PartialViewState.CheckChanged -> {
-                previousState.copy(enabled = partialViewState.checked, counter = partialViewState.counter)
+                previousState.copy(enabled = partialViewState.checked)
             }
         }
     }
 
-    internal fun saveClick(value: String) {
+    internal suspend fun saveClick(value: String) = coroutineScope {
         viewModelScope.launch {
             channel.send(ViewAction.SaveAction(value))
         }
     }
 
-    internal fun revertClick() {
+    internal suspend fun revertClick() = coroutineScope {
         viewModelScope.launch {
             channel.send(ViewAction.RevertAction)
         }
     }
 
-    fun checkedChanged(checked: Boolean, counter: Int) {
+    internal suspend fun checkedChanged(checked: Boolean) = coroutineScope {
         viewModelScope.launch {
-            channel.send(ViewAction.CheckedChanged(checked, counter))
+            channel.send(ViewAction.CheckedChanged(checked))
         }
     }
 
     private suspend fun updateConfigurationValue(value: String): Job = coroutineScope {
         viewModelScope.launch(Dispatchers.IO) {
+            val value1 = inputsLiveData.value!!
+            val configurationId = value1.configurationId!!
+            val scopeId = value1.scopeId!!
+
             if (selectedConfigurationValue != null) {
-                configurationValueDao.updateConfigurationValue(inputsLiveData.value!!.configurationId!!, inputsLiveData.value!!.scopeId!!, value)
+                configurationValueDao.updateConfigurationValue(configurationId, scopeId, value)
 
             } else {
-                val wrenchConfigurationValue = WrenchConfigurationValue(0, inputsLiveData.value!!.configurationId!!, value, inputsLiveData.value!!.scopeId!!)
+                val wrenchConfigurationValue = WrenchConfigurationValue(0, configurationId, value, scopeId)
                 wrenchConfigurationValue.id = configurationValueDao.insert(wrenchConfigurationValue)
             }
 
-            configurationDao.touch(inputsLiveData.value!!.configurationId!!, Date())
+            configurationDao.touch(configurationId, Date())
         }
     }
 
@@ -141,10 +146,10 @@ constructor(private val configurationDao: WrenchConfigurationDao, private val co
     }
 }
 
-internal sealed class ViewAction {
+private sealed class ViewAction {
     data class SaveAction(val value: String) : ViewAction()
     object RevertAction : ViewAction()
-    data class CheckedChanged(val checked: Boolean, val counter: Int) : ViewAction()
+    data class CheckedChanged(val checked: Boolean) : ViewAction()
 }
 
 internal sealed class ViewEffect {
@@ -154,14 +159,13 @@ internal sealed class ViewEffect {
 internal data class ViewState(val title: String? = null,
                               val enabled: Boolean? = null,
                               val saving: Boolean = false,
-                              val counter: Int = -1,
                               val reverting: Boolean = false)
 
 private sealed class PartialViewState {
     object Empty : PartialViewState()
     data class NewConfiguration(val title: String?) : PartialViewState()
     data class NewConfigurationValue(val enabled: Boolean) : PartialViewState()
-    data class CheckChanged(val checked: Boolean, val counter: Int) : PartialViewState()
+    data class CheckChanged(val checked: Boolean) : PartialViewState()
 
     object Saving : PartialViewState()
     object Reverting : PartialViewState()
