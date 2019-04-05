@@ -61,7 +61,7 @@ constructor(private val configurationDao: WrenchConfigurationDao, private val co
         viewState.addSource(selectedConfigurationValueLiveData) { wrenchConfigurationValue ->
             if (wrenchConfigurationValue != null) {
                 selectedConfigurationValue = wrenchConfigurationValue
-                viewState.value = reduce(viewState.value!!, PartialViewState.NewConfigurationValue(wrenchConfigurationValue.value))
+                viewEffects.value = Event(ViewEffect.ValueChanged(wrenchConfigurationValue.value!!.toInt()))
             }
         }
 
@@ -84,9 +84,6 @@ constructor(private val configurationDao: WrenchConfigurationDao, private val co
         return when (partialViewState) {
             is PartialViewState.NewConfiguration -> {
                 previousState.copy(title = partialViewState.title)
-            }
-            is PartialViewState.NewConfigurationValue -> {
-                previousState.copy(value = partialViewState.value)
             }
             is PartialViewState.Empty -> {
                 previousState
@@ -138,17 +135,16 @@ internal sealed class ViewAction {
 
 internal sealed class ViewEffect {
     object Dismiss : ViewEffect()
+    data class ValueChanged(val value: Int) : ViewEffect()
 }
 
 internal data class ViewState(val title: String? = null,
-                              val value: String? = null,
                               val saving: Boolean = false,
                               val reverting: Boolean = false)
 
 private sealed class PartialViewState {
     object Empty : PartialViewState()
     data class NewConfiguration(val title: String?) : PartialViewState()
-    data class NewConfigurationValue(val value: String?) : PartialViewState()
 
     object Saving : PartialViewState()
     object Reverting : PartialViewState()

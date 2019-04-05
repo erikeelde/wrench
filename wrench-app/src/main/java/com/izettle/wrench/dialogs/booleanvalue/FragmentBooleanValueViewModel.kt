@@ -50,9 +50,6 @@ constructor(private val configurationDao: WrenchConfigurationDao, private val co
                         deleteConfigurationValue()
                         viewEffects.value = Event(ViewEffect.Dismiss)
                     }
-                    is ViewAction.CheckedChanged -> {
-                        viewState.value = reduce(viewState.value!!, PartialViewState.CheckChanged(viewAction.checked))
-                    }
                 }
             }
         }
@@ -64,7 +61,9 @@ constructor(private val configurationDao: WrenchConfigurationDao, private val co
         viewState.addSource(selectedConfigurationValueLiveData) { wrenchConfigurationValue ->
             if (wrenchConfigurationValue != null) {
                 selectedConfigurationValue = wrenchConfigurationValue
-                viewState.value = reduce(viewState.value!!, PartialViewState.NewConfigurationValue(wrenchConfigurationValue.value!!.toBoolean()))
+
+                viewEffects.value = Event(ViewEffect.CheckedChanged(wrenchConfigurationValue.value!!.toBoolean()))
+
             }
         }
 
@@ -87,9 +86,6 @@ constructor(private val configurationDao: WrenchConfigurationDao, private val co
             is PartialViewState.NewConfiguration -> {
                 previousState.copy(title = partialViewState.title)
             }
-            is PartialViewState.NewConfigurationValue -> {
-                previousState.copy(enabled = partialViewState.enabled)
-            }
             is PartialViewState.Empty -> {
                 previousState
             }
@@ -98,9 +94,6 @@ constructor(private val configurationDao: WrenchConfigurationDao, private val co
             }
             is PartialViewState.Reverting -> {
                 previousState.copy(reverting = true)
-            }
-            is PartialViewState.CheckChanged -> {
-                previousState.copy(enabled = partialViewState.checked)
             }
         }
     }
@@ -114,12 +107,6 @@ constructor(private val configurationDao: WrenchConfigurationDao, private val co
     internal suspend fun revertClick() = coroutineScope {
         viewModelScope.launch {
             channel.send(ViewAction.RevertAction)
-        }
-    }
-
-    internal suspend fun checkedChanged(checked: Boolean) = coroutineScope {
-        viewModelScope.launch {
-            channel.send(ViewAction.CheckedChanged(checked))
         }
     }
 
@@ -149,23 +136,20 @@ constructor(private val configurationDao: WrenchConfigurationDao, private val co
 private sealed class ViewAction {
     data class SaveAction(val value: String) : ViewAction()
     object RevertAction : ViewAction()
-    data class CheckedChanged(val checked: Boolean) : ViewAction()
 }
 
 internal sealed class ViewEffect {
     object Dismiss : ViewEffect()
+    data class CheckedChanged(val enabled: Boolean) : ViewEffect()
 }
 
 internal data class ViewState(val title: String? = null,
-                              val enabled: Boolean? = null,
                               val saving: Boolean = false,
                               val reverting: Boolean = false)
 
 private sealed class PartialViewState {
     object Empty : PartialViewState()
     data class NewConfiguration(val title: String?) : PartialViewState()
-    data class NewConfigurationValue(val enabled: Boolean) : PartialViewState()
-    data class CheckChanged(val checked: Boolean) : PartialViewState()
 
     object Saving : PartialViewState()
     object Reverting : PartialViewState()

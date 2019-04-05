@@ -28,6 +28,7 @@ object Versions {
     const val lifecycle = "2.1.0-alpha04"
     const val paging = "2.1.0"
     const val atsl = "1.1.2-alpha03"
+    const val atsl_junit = "1.1.1-alpha03"
     const val test = "1.2.0-alpha03"
     const val truth = "1.2.0-alpha03"
     const val espresso = "3.1.0-beta02"
@@ -50,7 +51,7 @@ object AndroidTestingSupportLibrary {
     const val monitor = "androidx.test:monitor:${Versions.atsl}"
     const val core = "androidx.test:core:${Versions.test}"
     const val truth = "androidx.test.ext:truth:${Versions.truth}"
-    const val junit = "androidx.test.ext:junit:${Versions.atsl}"
+    const val junit = "androidx.test.ext:junit:${Versions.atsl_junit}"
 }
 
 object Lifecycle {

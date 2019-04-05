@@ -33,7 +33,7 @@ class IntegerValueFragment : DialogFragment() {
                     view.container.visibility = View.VISIBLE
                 }
                 view.title.text = viewState.title
-                view.value.setText(viewState.value)
+
                 if (invisible) {
                     view.value.jumpDrawablesToCurrentState()
                 }
@@ -51,6 +51,7 @@ class IntegerValueFragment : DialogFragment() {
                 viewEffect.getContentIfNotHandled()?.let { contentIfNotHandled ->
                     when (contentIfNotHandled) {
                         ViewEffect.Dismiss -> dismiss()
+                        is ViewEffect.ValueChanged -> view.value.setText(contentIfNotHandled.value.toString())
                     }
                 }
             }

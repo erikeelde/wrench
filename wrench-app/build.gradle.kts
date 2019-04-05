@@ -62,6 +62,7 @@ android {
     packagingOptions {
         exclude("META-INF/main.kotlin_module")
         exclude("mockito-extensions/org.mockito.plugins.MockMaker")
+        exclude("META-INF/atomicfu.kotlin_module")
     }
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_1_8
