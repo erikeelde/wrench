@@ -1,5 +1,3 @@
-import org.jetbrains.kotlin.gradle.internal.AndroidExtensionsExtension
-
 plugins {
     id("com.android.application")
     id("androidx.navigation.safeargs")
@@ -10,12 +8,7 @@ plugins {
 }
 
 // https://github.com/gradle/kotlin-dsl/issues/644#issuecomment-398502551
-// androidExtensions { isExperimental = true }
-androidExtensions {
-    configure(delegateClosureOf<AndroidExtensionsExtension> {
-        isExperimental = true
-    })
-}
+androidExtensions { isExperimental = true }
 
 kapt {
     javacOptions {
@@ -27,7 +20,7 @@ kapt {
 
 android {
     testOptions {
-        unitTests.setIncludeAndroidResources(true)
+        unitTests.isIncludeAndroidResources = true
     }
 
     dataBinding {

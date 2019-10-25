@@ -11,45 +11,44 @@ object Versions {
     const val wrench = "0.3"
 
     const val arch_core = "1.1.1"
-    const val junit = "4.13-beta-2"
-    const val mockito = "2.26.0"
+    const val junit = "4.13-beta-3"
+    const val mockito = "3.1.0"
     const val mockito_all = "1.10.19"
     const val dexmaker = "2.2.0"
     const val timber = "4.7.0"
-    const val android_gradle_plugin = "3.5.0-alpha10"
+    const val android_gradle_plugin = "4.0.0-alpha01"
     const val hamcrest = "1.3"
-    const val kotlin = "1.3.21"
+    const val kotlin = "1.3.50"
     const val work = "1.0.0-alpha01"
     const val navigation = "1.0.0"
-    const val kotlin_coroutines = "1.2.0-alpha-2"
+    const val kotlin_coroutines = "1.3.2"
 
-    const val room = "2.1.0-alpha05"
-    const val room_coroutine = "2.1.0-alpha04"
-    const val lifecycle = "2.1.0-alpha04"
+    const val room = "2.1.0-alpha04"
+    const val lifecycle = "2.2.0-rc01"
     const val paging = "2.1.0"
     const val atsl = "1.1.2-alpha03"
-    const val atsl_junit = "1.1.1-alpha03"
+    const val atsl_junit = "1.1.2-alpha02"
     const val test = "1.2.0-alpha03"
-    const val truth = "1.2.0-alpha03"
+    const val truth = "1.3.0-alpha02"
     const val espresso = "3.1.0-beta02"
 
-    const val robolectric = "4.3-alpha-2"
-    const val constraint_layout = "2.0.0-alpha4"
-    const val appcompat = "1.1.0-alpha04"
+    const val robolectric = "4.3.1"
+    const val constraint_layout = "2.0.0-beta3"
+    const val appcompat = "1.1.0"
     const val cardview = "1.0.0"
     const val savestate = "1.0.0-alpha02"
-    const val coordinatorlayout = "1.1.0-alpha01"
-    const val recyclerview = "1.1.0-alpha04"
-    const val material = "1.1.0-alpha05"
-    const val annotation = "1.1.0-beta01"
+    const val coordinatorlayout = "1.1.0-rc01"
+    const val recyclerview = "1.1.0-rc01"
+    const val material = "1.2.0-alpha01"
+    const val annotation = "1.1.0"
     const val koin = "1.0.2"
 }
 
 object AndroidTestingSupportLibrary {
-    const val runner = "androidx.test:runner:${Versions.test}"
-    const val rules = "androidx.test:rules:${Versions.test}"
+    const val runner = "androidx.test:runner:1.3.0-alpha02"
+    const val rules = "androidx.test:rules:1.3.0-alpha02"
     const val monitor = "androidx.test:monitor:${Versions.atsl}"
-    const val core = "androidx.test:core:${Versions.test}"
+    const val core = "androidx.test:core:1.2.1-alpha02"
     const val truth = "androidx.test.ext:truth:${Versions.truth}"
     const val junit = "androidx.test.ext:junit:${Versions.atsl_junit}"
 }
@@ -71,7 +70,7 @@ object Espresso {
 
 object Room {
     const val runtime = "androidx.room:room-runtime:${Versions.room}"
-    const val coroutine = "androidx.room:room-coroutines:${Versions.room_coroutine}"
+    const val coroutine = "androidx.room:room-coroutines:${Versions.room}"
     const val compiler = "androidx.room:room-compiler:${Versions.room}"
     const val rxjava2 = "androidx.room:room-rxjava2:${Versions.room}"
     const val testing = "androidx.room:room-testing:${Versions.room}"
@@ -112,7 +111,7 @@ object Navigation {
 
 object Oss {
     const val plugin = "com.google.gms:oss-licenses:0.9.2"
-    const val runtime = "com.google.android.gms:play-services-oss-licenses:16.0.2"
+    const val runtime = "com.google.android.gms:play-services-oss-licenses:17.0.0"
 }
 
 object Libs {

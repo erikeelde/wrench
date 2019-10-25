@@ -9,6 +9,7 @@ class Repos {
             handler.google()
             handler.jcenter()
             handler.maven("https://oss.sonatype.org/content/repositories/snapshots")
+            handler.maven("https://dl.bintray.com/kotlin/kotlin-eap")
         }
     }
 }
