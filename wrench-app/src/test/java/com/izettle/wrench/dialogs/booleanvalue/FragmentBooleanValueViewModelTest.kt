@@ -7,7 +7,6 @@ import com.izettle.wrench.database.WrenchDatabase
 import com.izettle.wrench.di.sampleAppModule
 import com.izettle.wrench.provider.IPackageManagerWrapper
 import com.izettle.wrench.provider.TestPackageManagerWrapper
-import kotlinx.coroutines.ExperimentalCoroutinesApi
 import org.junit.Before
 import org.junit.runner.RunWith
 import org.koin.dsl.module.module
@@ -26,7 +25,6 @@ val roomTestModule = module {
     }
 }
 
-@ExperimentalCoroutinesApi
 @RunWith(AndroidJUnit4::class)
 class FragmentBooleanValueViewModelTest : AutoCloseKoinTest() {
 

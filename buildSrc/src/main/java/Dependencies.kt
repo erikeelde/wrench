@@ -54,9 +54,12 @@ object AndroidTestingSupportLibrary {
 }
 
 object Lifecycle {
+    const val livedataKtx = "androidx.lifecycle:lifecycle-livedata-ktx:${Versions.lifecycle}"
     const val core = "androidx.lifecycle:lifecycle-livedata-core:${Versions.lifecycle}"
+    const val coreKtx = "androidx.lifecycle:lifecycle-livedata-core-ktx:${Versions.lifecycle}"
     const val runtime = "androidx.lifecycle:lifecycle-runtime:${Versions.lifecycle}"
     const val viewmodelKtx = "androidx.lifecycle:lifecycle-viewmodel-ktx:${Versions.lifecycle}"
+    const val runtimeKtx = "androidx.lifecycle:lifecycle-runtime-ktx:${Versions.lifecycle}"
     const val extensions = "androidx.lifecycle:lifecycle-extensions:${Versions.lifecycle}"
     const val java8 = "androidx.lifecycle:lifecycle-common-java8:${Versions.lifecycle}"
     const val compiler = "androidx.lifecycle:lifecycle-compiler:${Versions.lifecycle}"

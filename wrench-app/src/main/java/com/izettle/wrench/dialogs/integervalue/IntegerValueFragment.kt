@@ -9,10 +9,8 @@ import androidx.fragment.app.DialogFragment
 import androidx.lifecycle.Observer
 import com.izettle.wrench.R
 import kotlinx.android.synthetic.main.fragment_integer_value.view.*
-import kotlinx.coroutines.ExperimentalCoroutinesApi
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
-@ExperimentalCoroutinesApi
 class IntegerValueFragment : DialogFragment() {
 
     private val viewModel: FragmentIntegerValueViewModel by viewModel()
