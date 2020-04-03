@@ -12,9 +12,8 @@ androidExtensions {
 }
 
 android {
-
-    dataBinding {
-        isEnabled = true
+    buildFeatures {
+        dataBinding = true
     }
 
     compileSdkVersion(Versions.compileSdk)
@@ -47,10 +46,10 @@ android {
         isCheckReleaseBuilds = true
         isAbortOnError = true
         isWarningsAsErrors = true
-        setLintConfig(File("../lint.xml"))
+        lintConfig = File("../lint.xml")
     }
     testOptions {
-        unitTests.setIncludeAndroidResources(true)
+        unitTests.isIncludeAndroidResources = true
     }
 }
 

@@ -23,8 +23,8 @@ android {
         unitTests.isIncludeAndroidResources = true
     }
 
-    dataBinding {
-        isEnabled = true
+    buildFeatures {
+        dataBinding = true
     }
 
     compileSdkVersion(Versions.compileSdk)
@@ -76,7 +76,7 @@ android {
         isCheckReleaseBuilds = true
         isAbortOnError = true
         isWarningsAsErrors = true
-        setLintConfig(File("../lint.xml"))
+        lintConfig = File("../lint.xml")
     }
     sourceSets {
         // debug.assets.srcDirs => https://github.com/robolectric/robolectric/issues/3928
@@ -131,7 +131,7 @@ dependencies {
     implementation(Libs.lifecycle.coreKtx)
     implementation(Libs.lifecycle.livedataKtx)
     implementation(Libs.room.runtime)
-    implementation(Libs.room.coroutine)
+    implementation(Libs.room.ktx)
     implementation(Libs.paging)
 
     implementation(Libs.navigation.fragmentKotlin)
