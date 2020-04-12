@@ -9,8 +9,9 @@ import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.launch
+import javax.inject.Inject
 
-class WrenchServiceFragmentViewModel constructor(service: WrenchService) : ViewModel() {
+class WrenchServiceFragmentViewModel @Inject constructor(service: WrenchService) : ViewModel() {
 
     private val wrenchPreference = service.create(WrenchPreference::class.java)
 

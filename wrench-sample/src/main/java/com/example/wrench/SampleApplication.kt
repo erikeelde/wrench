@@ -1,14 +1,12 @@
 package com.example.wrench
 
-import android.app.Application
-import com.example.wrench.di.sampleAppModule
-import org.koin.android.ext.android.startKoin
+import com.example.wrench.di.DaggerApplicationComponent
+import dagger.android.AndroidInjector
+import dagger.android.support.DaggerApplication
 
-class SampleApplication : Application() {
+class SampleApplication : DaggerApplication() {
 
-    override fun onCreate() {
-        super.onCreate()
-
-        startKoin(this, listOf(sampleAppModule))
+    override fun applicationInjector(): AndroidInjector<out DaggerApplication> {
+        return DaggerApplicationComponent.factory().create(applicationContext)
     }
 }

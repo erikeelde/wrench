@@ -6,8 +6,9 @@ import androidx.lifecycle.ViewModel
 import com.example.wrench.MyEnum
 import com.example.wrench.R
 import com.izettle.wrench.livedata.WrenchLiveData
+import javax.inject.Inject
 
-class LiveDataPreferencesFragmentViewModel constructor(private val context: Context) : ViewModel() {
+class LiveDataPreferencesFragmentViewModel @Inject constructor(private val context: Context) : ViewModel() {
 
     private val stringConfig by lazy {
         WrenchLiveData.create(context, context.resources.getString(R.string.string_configuration), "string1")

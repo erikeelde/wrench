@@ -9,6 +9,7 @@ object Versions {
     const val appVersionName = "1.0.13"
 
     const val wrench = "0.3"
+    const val dagger = "2.27"
 
     const val arch_core = "1.1.1"
     const val junit = "4.13"
@@ -16,7 +17,7 @@ object Versions {
     const val mockito_all = "1.10.19"
     const val dexmaker = "2.2.0"
     const val timber = "4.7.0"
-    const val android_gradle_plugin = "4.0.0-beta03"
+    const val android_gradle_plugin = "4.0.0-beta04"
     const val hamcrest = "1.3"
     const val kotlin = "1.3.71"
     const val work = "1.0.0-alpha01"
@@ -118,6 +119,7 @@ object Oss {
 }
 
 object Libs {
+    val dagger = Dagger
     val wrench = Wrench
     val lifecycle = Lifecycle
     val support = Support
@@ -143,6 +145,13 @@ object Libs {
 
     const val stetho = "com.facebook.stetho:stetho:1.5.1"
 
+}
+
+object Dagger {
+    const val runtime = "com.google.dagger:dagger:${Versions.dagger}"
+    const val compiler = "com.google.dagger:dagger-compiler:${Versions.dagger}"
+    const val androidSupport = "com.google.dagger:dagger-android-support:${Versions.dagger}"
+    const val androidProcessor = "com.google.dagger:dagger-android-processor:${Versions.dagger}"
 }
 
 object Support {

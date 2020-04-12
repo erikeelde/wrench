@@ -27,6 +27,9 @@ android {
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         vectorDrawables.useSupportLibrary = true
     }
+    kotlinOptions {
+        jvmTarget = JavaVersion.VERSION_1_8.toString()
+    }
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_1_8
         targetCompatibility = JavaVersion.VERSION_1_8
@@ -89,7 +92,10 @@ dependencies {
     implementation(Libs.kotlin.stdlib)
     implementation(Libs.kotlin.coroutinesAndroid)
 
-    implementation(Libs.oss.runtime)
+    implementation(Libs.dagger.runtime)
+    kapt(Libs.dagger.compiler)
+    implementation(Libs.dagger.androidSupport)
+    kapt(Libs.dagger.androidProcessor)
 
-    implementation(Libs.koin.androidx)
+    implementation(Libs.oss.runtime)
 }

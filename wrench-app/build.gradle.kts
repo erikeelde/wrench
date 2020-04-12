@@ -117,6 +117,11 @@ dependencies {
     kapt(Libs.lifecycle.compiler)
     kapt(Libs.room.compiler)
 
+    implementation(Libs.dagger.runtime)
+    kapt(Libs.dagger.compiler)
+    implementation(Libs.dagger.androidSupport)
+    kapt(Libs.dagger.androidProcessor)
+
     implementation(Libs.support.app_compat)
     implementation(Libs.support.recyclerview)
     implementation(Libs.support.design)

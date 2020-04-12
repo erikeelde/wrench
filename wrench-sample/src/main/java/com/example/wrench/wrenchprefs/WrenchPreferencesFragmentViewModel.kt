@@ -1,6 +1,6 @@
 package com.example.wrench.wrenchprefs
 
-import android.content.res.Resources
+import android.content.Context
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -11,8 +11,9 @@ import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.launch
+import javax.inject.Inject
 
-class WrenchPreferencesFragmentViewModel constructor(val resources: Resources, private val wrenchPreferences: WrenchPreferences) : ViewModel() {
+class WrenchPreferencesFragmentViewModel @Inject constructor(val context: Context, private val wrenchPreferences: WrenchPreferences) : ViewModel() {
 
     private val job = Job()
     private val scope = CoroutineScope(job + Dispatchers.Main)
@@ -23,7 +24,7 @@ class WrenchPreferencesFragmentViewModel constructor(val resources: Resources, p
 
     fun getStringConfiguration(): LiveData<String> {
         scope.launch {
-            stringConfig.postValue(wrenchPreferences.getString(resources.getString(R.string.string_configuration), "string1"))
+            stringConfig.postValue(wrenchPreferences.getString(context.getString(R.string.string_configuration), "string1"))
         }
         return stringConfig
     }
@@ -34,7 +35,7 @@ class WrenchPreferencesFragmentViewModel constructor(val resources: Resources, p
 
     fun getUrlConfiguration(): LiveData<String> {
         scope.launch {
-            urlConfig.postValue(wrenchPreferences.getString(resources.getString(R.string.url_configuration), "http://www.example.com/path?param=value"))
+            urlConfig.postValue(wrenchPreferences.getString(context.getString(R.string.url_configuration), "http://www.example.com/path?param=value"))
         }
         return urlConfig
     }
@@ -45,7 +46,7 @@ class WrenchPreferencesFragmentViewModel constructor(val resources: Resources, p
 
     fun getBooleanConfiguration(): LiveData<Boolean> {
         scope.launch {
-            booleanConfig.postValue(wrenchPreferences.getBoolean(resources.getString(R.string.boolean_configuration), true))
+            booleanConfig.postValue(wrenchPreferences.getBoolean(context.getString(R.string.boolean_configuration), true))
         }
         return booleanConfig
     }
@@ -56,7 +57,7 @@ class WrenchPreferencesFragmentViewModel constructor(val resources: Resources, p
 
     fun getIntConfiguration(): LiveData<Int> {
         scope.launch {
-            intConfig.postValue(wrenchPreferences.getInt(resources.getString(R.string.int_configuration), 1))
+            intConfig.postValue(wrenchPreferences.getInt(context.getString(R.string.int_configuration), 1))
         }
         return intConfig
 
@@ -68,7 +69,7 @@ class WrenchPreferencesFragmentViewModel constructor(val resources: Resources, p
 
     fun getEnumConfiguration(): LiveData<MyEnum> {
         scope.launch {
-            enumConfig.postValue(wrenchPreferences.getEnum(resources.getString(R.string.enum_configuration), MyEnum::class.java, MyEnum.SECOND))
+            enumConfig.postValue(wrenchPreferences.getEnum(context.getString(R.string.enum_configuration), MyEnum::class.java, MyEnum.SECOND))
         }
         return enumConfig
     }

@@ -5,13 +5,18 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
+import androidx.lifecycle.ViewModelProvider
 import com.example.wrench.databinding.FragmentWrenchPreferencesBinding
-import org.koin.androidx.viewmodel.ext.android.viewModel
+import dagger.android.support.DaggerFragment
+import javax.inject.Inject
 
-class WrenchPreferencesFragment : Fragment() {
+class WrenchPreferencesFragment : DaggerFragment() {
 
-    private val viewModel: WrenchPreferencesFragmentViewModel by viewModel()
+    @Inject
+    lateinit var viewModelFactory: ViewModelProvider.Factory
+
+    private val viewModel by viewModels<WrenchPreferencesFragmentViewModel> { viewModelFactory }
 
     private lateinit var binding: FragmentWrenchPreferencesBinding
 
