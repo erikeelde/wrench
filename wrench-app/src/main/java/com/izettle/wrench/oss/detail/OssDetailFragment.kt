@@ -6,17 +6,22 @@ import android.text.util.Linkify
 import android.view.LayoutInflater
 import androidx.appcompat.app.AlertDialog
 import androidx.core.text.util.LinkifyCompat
-import androidx.fragment.app.DialogFragment
+import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProvider
 import com.izettle.wrench.databinding.FragmentOssDetailBinding
 import com.izettle.wrench.oss.LicenceMetadata
-import org.koin.androidx.viewmodel.ext.android.viewModel
+import dagger.android.support.DaggerDialogFragment
+import javax.inject.Inject
 
-class OssDetailFragment : DialogFragment() {
+class OssDetailFragment : DaggerDialogFragment() {
 
     private lateinit var binding: FragmentOssDetailBinding
 
-    private val viewModel: OssDetailViewModel by viewModel()
+    @Inject
+    lateinit var viewModelFactory: ViewModelProvider.Factory
+
+    private val viewModel by viewModels<OssDetailViewModel> { viewModelFactory }
 
     companion object {
         @JvmStatic

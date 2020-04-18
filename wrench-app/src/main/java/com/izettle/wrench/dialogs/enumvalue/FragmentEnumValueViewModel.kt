@@ -7,9 +7,10 @@ import com.izettle.wrench.database.*
 import kotlinx.coroutines.async
 import kotlinx.coroutines.launch
 import java.util.*
+import javax.inject.Inject
 
 class FragmentEnumValueViewModel
-constructor(
+@Inject internal constructor(
         private val configurationDao: WrenchConfigurationDao,
         private val configurationValueDao: WrenchConfigurationValueDao,
         private val predefinedConfigurationValueDao: WrenchPredefinedConfigurationValueDao)

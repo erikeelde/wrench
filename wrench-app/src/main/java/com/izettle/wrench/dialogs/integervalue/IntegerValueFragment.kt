@@ -5,19 +5,22 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import androidx.appcompat.app.AlertDialog
-import androidx.fragment.app.DialogFragment
+import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProvider
 import com.izettle.wrench.R
+import dagger.android.support.DaggerDialogFragment
 import kotlinx.android.synthetic.main.fragment_integer_value.view.*
-import org.koin.androidx.viewmodel.ext.android.viewModel
+import javax.inject.Inject
 
-class IntegerValueFragment : DialogFragment() {
+class IntegerValueFragment : DaggerDialogFragment() {
 
-    private val viewModel: FragmentIntegerValueViewModel by viewModel()
+    @Inject
+    lateinit var viewModelFactory: ViewModelProvider.Factory
+
+    private val viewModel by viewModels<FragmentIntegerValueViewModel> { viewModelFactory }
 
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
-        assert(arguments != null)
-
         val view = LayoutInflater.from(requireContext()).inflate(R.layout.fragment_integer_value, null)
 
         val args = IntegerValueFragmentArgs.fromBundle(arguments!!)

@@ -10,9 +10,10 @@ import com.izettle.wrench.database.WrenchConfigurationValue
 import com.izettle.wrench.database.WrenchConfigurationValueDao
 import kotlinx.coroutines.launch
 import java.util.*
+import javax.inject.Inject
 
 class FragmentStringValueViewModel
-constructor(private val configurationDao: WrenchConfigurationDao, private val configurationValueDao: WrenchConfigurationValueDao) : ViewModel() {
+@Inject internal constructor(private val configurationDao: WrenchConfigurationDao, private val configurationValueDao: WrenchConfigurationValueDao) : ViewModel() {
 
     private var configurationId: Long = 0
 

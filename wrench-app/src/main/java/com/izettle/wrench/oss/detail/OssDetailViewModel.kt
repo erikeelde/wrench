@@ -4,8 +4,9 @@ import android.content.Context
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel
 import com.izettle.wrench.oss.LicenceMetadata
+import javax.inject.Inject
 
-class OssDetailViewModel constructor(val context: Context) : ViewModel() {
+class OssDetailViewModel @Inject internal constructor(val context: Context) : ViewModel() {
 
     fun getThirdPartyMetadata(licenceMetadata: LicenceMetadata): LiveData<String> {
         return LicenceMetadataLiveData(context, licenceMetadata)

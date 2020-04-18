@@ -5,19 +5,23 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.inputmethod.EditorInfo
 import androidx.appcompat.app.AlertDialog
-import androidx.fragment.app.DialogFragment
+import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProvider
 import com.izettle.wrench.R
 import com.izettle.wrench.databinding.FragmentStringValueBinding
-import org.koin.androidx.viewmodel.ext.android.viewModel
+import dagger.android.support.DaggerDialogFragment
+import javax.inject.Inject
 
-class StringValueFragment : DialogFragment() {
+class StringValueFragment : DaggerDialogFragment() {
 
     private lateinit var binding: FragmentStringValueBinding
-    private val viewModel: FragmentStringValueViewModel by viewModel()
 
+    @Inject
+    lateinit var viewModelFactory: ViewModelProvider.Factory
+
+    private val viewModel by viewModels<FragmentStringValueViewModel> { viewModelFactory }
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
-        assert(arguments != null)
 
         binding = FragmentStringValueBinding.inflate(LayoutInflater.from(context))
 

@@ -1,9 +1,15 @@
 package com.izettle.wrench
 
-import android.app.Application
 import com.facebook.stetho.Stetho
+import com.izettle.wrench.di.DaggerApplicationComponent
+import dagger.android.AndroidInjector
+import dagger.android.support.DaggerApplication
 
-class WrenchApplication : Application() {
+class WrenchApplication : DaggerApplication() {
+
+    override fun applicationInjector(): AndroidInjector<out DaggerApplication> {
+        return DaggerApplicationComponent.factory().create(applicationContext)
+    }
 
     override fun onCreate() {
         super.onCreate()

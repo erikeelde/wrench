@@ -1,6 +1,9 @@
 package com.izettle.wrench.provider
 
-import android.content.*
+import android.content.ContentUris
+import android.content.ContentValues
+import android.content.Context
+import android.content.UriMatcher
 import android.content.pm.PackageManager
 import android.database.Cursor
 import android.net.Uri
@@ -9,28 +12,34 @@ import com.izettle.wrench.BuildConfig
 import com.izettle.wrench.core.Bolt
 import com.izettle.wrench.core.WrenchProviderContract
 import com.izettle.wrench.database.*
-import com.izettle.wrench.di.sampleAppModule
 import com.izettle.wrench.preferences.WrenchPreferences
-import org.koin.android.ext.android.inject
-import org.koin.android.ext.android.startKoin
+import dagger.android.DaggerContentProvider
 import java.util.*
+import javax.inject.Inject
 
 
-class WrenchProvider : ContentProvider() {
+class WrenchProvider : DaggerContentProvider() {
 
-    val applicationDao: WrenchApplicationDao by inject()
+    @Inject
+    lateinit var applicationDao: WrenchApplicationDao
 
-    val scopeDao: WrenchScopeDao by inject()
+    @Inject
+    lateinit var scopeDao: WrenchScopeDao
 
-    val configurationDao: WrenchConfigurationDao by inject()
+    @Inject
+    lateinit var configurationDao: WrenchConfigurationDao
 
-    val configurationValueDao: WrenchConfigurationValueDao by inject()
+    @Inject
+    lateinit var configurationValueDao: WrenchConfigurationValueDao
 
-    val predefinedConfigurationDao: WrenchPredefinedConfigurationValueDao by inject()
+    @Inject
+    lateinit var predefinedConfigurationDao: WrenchPredefinedConfigurationValueDao
 
-    val packageManagerWrapper: IPackageManagerWrapper by inject()
+    @Inject
+    lateinit var packageManagerWrapper: IPackageManagerWrapper
 
-    val wrenchPreferences: WrenchPreferences by inject()
+    @Inject
+    lateinit var wrenchPreferences: WrenchPreferences
 
     @Synchronized
     private fun getCallingApplication(applicationDao: WrenchApplicationDao): WrenchApplication? {
@@ -53,7 +62,7 @@ class WrenchProvider : ContentProvider() {
     }
 
     override fun onCreate(): Boolean {
-        startKoin(context!!, listOf(sampleAppModule))
+        // startKoin(context!!, listOf(sampleAppModule))
 
         return true
     }

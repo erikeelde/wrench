@@ -57,6 +57,9 @@ android {
         exclude("mockito-extensions/org.mockito.plugins.MockMaker")
         exclude("META-INF/atomicfu.kotlin_module")
     }
+    kotlinOptions {
+        jvmTarget = JavaVersion.VERSION_1_8.toString()
+    }
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_1_8
         targetCompatibility = JavaVersion.VERSION_1_8
@@ -146,6 +149,11 @@ dependencies {
     implementation(Libs.wrench.prefs)
     implementation(Libs.kotlin.stdlib)
     implementation(Libs.kotlin.coroutinesAndroid)
+
+    implementation(Libs.dagger.runtime)
+    kapt(Libs.dagger.compiler)
+    implementation(Libs.dagger.androidSupport)
+    kapt(Libs.dagger.androidProcessor)
 
     implementation(Libs.koin.androidx)
 

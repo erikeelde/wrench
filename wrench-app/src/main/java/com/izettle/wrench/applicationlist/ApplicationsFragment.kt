@@ -4,16 +4,20 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.izettle.wrench.databinding.FragmentApplicationsBinding
-import org.koin.androidx.viewmodel.ext.android.viewModel
+import dagger.android.support.DaggerFragment
+import javax.inject.Inject
 
+class ApplicationsFragment : DaggerFragment() {
 
-class ApplicationsFragment : Fragment() {
+    @Inject
+    lateinit var viewModelFactory: ViewModelProvider.Factory
 
-    private val model: ApplicationViewModel by viewModel()
+    private val model by viewModels<ApplicationViewModel> { viewModelFactory }
 
     private lateinit var fragmentApplicationsBinding: FragmentApplicationsBinding
 

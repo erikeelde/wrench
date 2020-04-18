@@ -5,16 +5,23 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProvider
 import com.izettle.wrench.databinding.FragmentOssBinding
 import com.izettle.wrench.oss.detail.OssDetailFragment
 import com.izettle.wrench.oss.detail.OssDetailFragmentArgs
-import org.koin.androidx.viewmodel.ext.android.viewModel
+import dagger.android.support.DaggerFragment
+import javax.inject.Inject
 
-class OssFragment : Fragment() {
+class OssFragment : DaggerFragment() {
     private lateinit var binding: FragmentOssBinding
-    private val model: OssListViewModel by viewModel()
+
+    @Inject
+    lateinit var viewModelFactory: ViewModelProvider.Factory
+
+    private val viewModel by viewModels<OssListViewModel> { viewModelFactory }
+
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         return FragmentOssBinding.inflate(inflater, container, false).also { binding = it }.root
@@ -30,7 +37,7 @@ class OssFragment : Fragment() {
         })
         binding.recView.adapter = adapter
 
-        model.getThirdPartyMetadata().observe(this, Observer {
+        viewModel.getThirdPartyMetadata().observe(viewLifecycleOwner, Observer {
             adapter.submitList(it)
         })
     }

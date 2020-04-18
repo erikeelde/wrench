@@ -9,9 +9,10 @@ import androidx.paging.LivePagedListBuilder
 import androidx.paging.PagedList
 import com.izettle.wrench.database.WrenchApplication
 import com.izettle.wrench.database.WrenchApplicationDao
+import javax.inject.Inject
 
 class ApplicationViewModel
-internal constructor(applicationDao: WrenchApplicationDao) : ViewModel() {
+@Inject internal constructor(applicationDao: WrenchApplicationDao) : ViewModel() {
 
     private val mediatedApplications: MediatorLiveData<PagedList<WrenchApplication>>
 

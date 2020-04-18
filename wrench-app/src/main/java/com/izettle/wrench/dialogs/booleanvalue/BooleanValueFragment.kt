@@ -5,21 +5,24 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import androidx.appcompat.app.AlertDialog
-import androidx.fragment.app.DialogFragment
+import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProvider
 import com.izettle.wrench.R
+import dagger.android.support.DaggerDialogFragment
 import kotlinx.android.synthetic.main.fragment_boolean_value.view.*
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
-import org.koin.androidx.viewmodel.ext.android.viewModel
+import javax.inject.Inject
 
-class BooleanValueFragment : DialogFragment() {
+class BooleanValueFragment : DaggerDialogFragment() {
 
-    private val viewModel: FragmentBooleanValueViewModel by viewModel()
+    @Inject
+    lateinit var viewModelFactory: ViewModelProvider.Factory
+
+    private val viewModel by viewModels<FragmentBooleanValueViewModel> { viewModelFactory }
 
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
-        assert(arguments != null)
-
         val view = LayoutInflater.from(requireContext()).inflate(R.layout.fragment_boolean_value, null)
 
         val args = BooleanValueFragmentArgs.fromBundle(arguments!!)

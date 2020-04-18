@@ -12,9 +12,10 @@ import kotlinx.coroutines.channels.ConflatedBroadcastChannel
 import kotlinx.coroutines.coroutineScope
 import kotlinx.coroutines.launch
 import java.util.*
+import javax.inject.Inject
 
 class FragmentIntegerValueViewModel
-constructor(private val configurationDao: WrenchConfigurationDao, private val configurationValueDao: WrenchConfigurationValueDao) : ViewModel() {
+@Inject internal constructor(private val configurationDao: WrenchConfigurationDao, private val configurationValueDao: WrenchConfigurationValueDao) : ViewModel() {
 
     private val inputsLiveData = MediatorLiveData<Inputs>().apply {
         value = Inputs()
