@@ -62,8 +62,7 @@ class WrenchProvider : DaggerContentProvider() {
     }
 
     override fun onCreate(): Boolean {
-        // startKoin(context!!, listOf(sampleAppModule))
-
+        super.onCreate()
         return true
     }
 

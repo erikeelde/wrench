@@ -25,7 +25,7 @@ android {
         isCheckReleaseBuilds = true
         isAbortOnError = true
         isWarningsAsErrors = true
-        setLintConfig(File("../lint.xml"))
+        lintConfig = File("../lint.xml")
     }
 }
 
@@ -40,6 +40,7 @@ dependencies {
     implementation(Libs.wrench.core)
     implementation(Libs.support.annotations)
     implementation(Libs.kotlin.stdlib)
+    implementation("androidx.core:core-ktx:+")
 }
 
 apply(rootProject.file("gradle/gradle-mvn-push.gradle"))

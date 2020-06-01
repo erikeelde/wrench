@@ -26,10 +26,10 @@ android {
         isCheckReleaseBuilds = true
         isAbortOnError = true
         isWarningsAsErrors = true
-        setLintConfig(File("../lint.xml"))
+        lintConfig = File("../lint.xml")
     }
     testOptions {
-        unitTests.setIncludeAndroidResources(true)
+        unitTests.isIncludeAndroidResources = true
     }
 }
 
@@ -46,6 +46,7 @@ dependencies {
     implementation(Libs.wrench.core)
     implementation(Libs.support.annotations)
     implementation(Libs.kotlin.stdlib)
+    implementation("androidx.core:core-ktx:1.3.0")
 }
 
 apply(rootProject.file("gradle/gradle-mvn-push.gradle"))

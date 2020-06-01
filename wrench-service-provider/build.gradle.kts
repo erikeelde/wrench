@@ -24,7 +24,7 @@ android {
         isCheckReleaseBuilds = true
         isAbortOnError = true
         isWarningsAsErrors = true
-        setLintConfig(File("../lint.xml"))
+        lintConfig = File("../lint.xml")
     }
 
     compileOptions {

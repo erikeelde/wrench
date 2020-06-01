@@ -12,8 +12,7 @@ android {
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
 
         val wrenchProviderAuthority = "com.izettle.wrench.configprovider"
-
-        manifestPlaceholders = mapOf("wrenchProviderAuthority" to wrenchProviderAuthority)
+        manifestPlaceholders["wrenchProviderAuthority"] = wrenchProviderAuthority
         buildConfigField("String", "WRENCH_AUTHORITY", "\"${wrenchProviderAuthority}\"")
 
         buildConfigField("int", "WRENCH_API_VERSION", "1")
@@ -35,7 +34,7 @@ android {
         isCheckReleaseBuilds = true
         isAbortOnError = true
         isWarningsAsErrors = true
-        setLintConfig(File("../lint.xml"))
+        lintConfig = File("../lint.xml")
     }
 }
 

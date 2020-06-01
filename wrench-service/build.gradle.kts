@@ -24,7 +24,7 @@ android {
         isCheckReleaseBuilds = true
         isAbortOnError = true
         isWarningsAsErrors = true
-        setLintConfig(File("../lint.xml"))
+        lintConfig = File("../lint.xml")
     }
 
     compileOptions {
@@ -44,6 +44,7 @@ dependencies {
     implementation(Libs.support.annotations)
 
     api(project(":wrench-service-provider"))
+    implementation("androidx.core:core-ktx:+")
 }
 
 // The api of this module should be discussed before any potential release

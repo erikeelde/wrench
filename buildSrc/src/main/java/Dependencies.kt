@@ -9,7 +9,7 @@ object Versions {
     const val appVersionName = "1.0.13"
 
     const val wrench = "0.3"
-    const val dagger = "2.27"
+    const val dagger = "2.28"
 
     const val arch_core = "1.1.1"
     const val junit = "4.13"
@@ -17,12 +17,12 @@ object Versions {
     const val mockito_all = "1.10.19"
     const val dexmaker = "2.2.0"
     const val timber = "4.7.0"
-    const val android_gradle_plugin = "4.0.0-beta04"
+    const val android_gradle_plugin = "4.1.0-alpha10"
     const val hamcrest = "1.3"
-    const val kotlin = "1.3.71"
+    const val kotlin = "1.3.72"
     const val work = "1.0.0-alpha01"
-    const val navigation = "2.2.1"
-    const val kotlin_coroutines = "1.3.5"
+    const val navigation = "2.2.2"
+    const val kotlin_coroutines = "1.3.7"
 
     const val room = "2.2.5"
     const val lifecycle = "2.2.0"

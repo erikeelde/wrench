@@ -98,4 +98,5 @@ dependencies {
     kapt(Libs.dagger.androidProcessor)
 
     implementation(Libs.oss.runtime)
+    implementation("androidx.core:core-ktx:+")
 }

@@ -40,14 +40,15 @@ android {
 
         javaCompileOptions {
             annotationProcessorOptions {
-                arguments = mapOf("room.schemaLocation" to "$projectDir/schemas")
+                arguments["room.schemaLocation"] = "$projectDir/schemas"
             }
         }
 
         val configurationAuthorityValue = "$applicationId.configprovider"
         val wrenchPermission = "$applicationId.permission"
 
-        manifestPlaceholders = mapOf("configurationAuthority" to configurationAuthorityValue, "wrenchPermission" to wrenchPermission)
+        manifestPlaceholders["configurationAuthority"] = configurationAuthorityValue
+        manifestPlaceholders["wrenchPermission"] = wrenchPermission
 
         buildConfigField("String", "CONFIG_AUTHORITY", "\"$configurationAuthorityValue\"")
 
@@ -154,7 +155,8 @@ dependencies {
     kapt(Libs.dagger.compiler)
     implementation(Libs.dagger.androidSupport)
     kapt(Libs.dagger.androidProcessor)
-
-    implementation(Libs.koin.androidx)
-
+    implementation("androidx.core:core-ktx:1.3.0")
+}
+repositories {
+    mavenCentral()
 }
