@@ -1,9 +1,9 @@
 plugins {
     id("com.android.application")
-    id("androidx.navigation.safeargs")
     kotlin("android")
     kotlin("android.extensions")
     kotlin("kapt")
+    id("androidx.navigation.safeargs.kotlin")
     id("com.google.gms.oss.licenses.plugin")
 }
 
