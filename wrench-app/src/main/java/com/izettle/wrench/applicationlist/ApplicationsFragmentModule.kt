@@ -9,7 +9,7 @@ import dagger.android.ContributesAndroidInjector
 import dagger.multibindings.IntoMap
 
 @Module
-abstract class ApplicationsFragmentModule {
+internal abstract class ApplicationsFragmentModule {
     @ContributesAndroidInjector(modules = [
         ViewModelBuilder::class
     ])

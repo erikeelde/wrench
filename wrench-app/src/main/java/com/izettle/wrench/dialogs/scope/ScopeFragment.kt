@@ -30,7 +30,7 @@ class ScopeFragment : DaggerDialogFragment(), ScopeRecyclerViewAdapter.Listener 
 
         binding = FragmentScopeBinding.inflate(LayoutInflater.from(context))
 
-        viewModel.init(arguments!!.getLong(ARGUMENT_APPLICATION_ID))
+        viewModel.init(requireArguments().getLong(ARGUMENT_APPLICATION_ID))
 
         viewModel.scopes.observe(this, Observer { scopes -> adapter!!.submitList(scopes) })
 

@@ -5,7 +5,6 @@ import androidx.test.core.app.ApplicationProvider
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import com.izettle.wrench.database.WrenchDatabase
 import com.izettle.wrench.di.sampleAppModule
-import com.izettle.wrench.provider.IPackageManagerWrapper
 import com.izettle.wrench.provider.TestPackageManagerWrapper
 import org.junit.Before
 import org.junit.runner.RunWith
@@ -21,7 +20,7 @@ val roomTestModule = module {
     }
 
     single(override = true) {
-        TestPackageManagerWrapper("TestApplication", "com.test.application") as IPackageManagerWrapper
+        TestPackageManagerWrapper("TestApplication", "com.test.application")
     }
 }
 

@@ -27,7 +27,7 @@ val roomTestModule = module {
     }
 
     single(override = true) {
-        TestPackageManagerWrapper("TestApplication", "com.test.application") as IPackageManagerWrapper
+        TestPackageManagerWrapper("TestApplication", "com.test.application")
     }
 }
 

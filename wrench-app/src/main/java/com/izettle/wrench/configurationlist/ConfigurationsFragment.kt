@@ -78,37 +78,37 @@ class ConfigurationsFragment : DaggerFragment(), SearchView.OnQueryTextListener,
         super.onViewCreated(view, savedInstanceState)
         assert(arguments != null)
 
-        val args = ConfigurationsFragmentArgs.fromBundle(arguments!!)
+        val args = ConfigurationsFragmentArgs.fromBundle(requireArguments())
         model.setApplicationId(args.applicationId)
 
         fragmentConfigurationsBinding.list.layoutManager = LinearLayoutManager(context)
 
-        model.wrenchApplication.observe(this, Observer { wrenchApplication ->
+        model.wrenchApplication.observe(viewLifecycleOwner, Observer { wrenchApplication ->
             if (wrenchApplication != null) {
                 (activity as AppCompatActivity).supportActionBar!!.title = wrenchApplication.applicationLabel
             }
         })
 
-        model.defaultScopeLiveData.observe(this, Observer { scope ->
+        model.defaultScopeLiveData.observe(viewLifecycleOwner, Observer { scope ->
             if (scope != null && fragmentConfigurationsBinding.list.adapter != null) {
                 fragmentConfigurationsBinding.list.adapter!!.notifyDataSetChanged()
             }
         })
 
-        model.selectedScopeLiveData.observe(this, Observer { scope ->
+        model.selectedScopeLiveData.observe(viewLifecycleOwner, Observer { scope ->
             if (scope != null && fragmentConfigurationsBinding.list.adapter != null) {
                 fragmentConfigurationsBinding.list.adapter!!.notifyDataSetChanged()
             }
             // fragmentConfigurationsBinding.scopeButton.text = scope!!.name
         })
 
-        model.configurations.observe(this, Observer { wrenchConfigurationWithValues ->
+        model.configurations.observe(viewLifecycleOwner, Observer { wrenchConfigurationWithValues ->
             if (wrenchConfigurationWithValues != null) {
                 updateConfigurations(wrenchConfigurationWithValues)
             }
         })
 
-        model.isListEmpty.observe(this, Observer { isEmpty ->
+        model.isListEmpty.observe(viewLifecycleOwner, Observer { isEmpty ->
             val animator = fragmentConfigurationsBinding.animator
             if (isEmpty == null || isEmpty) {
                 animator.displayedChild = animator.indexOfChild(fragmentConfigurationsBinding.noConfigurationsEmptyView)
@@ -169,7 +169,7 @@ class ConfigurationsFragment : DaggerFragment(), SearchView.OnQueryTextListener,
                         if (intent != null) {
                             context!!.startActivity(Intent.makeRestartActivityTask(intent.component))
                         } else if (this@ConfigurationsFragment.view != null) {
-                            Snackbar.make(this@ConfigurationsFragment.view!!, R.string.application_not_installed, Snackbar.LENGTH_LONG).show()
+                            Snackbar.make(this@ConfigurationsFragment.requireView(), R.string.application_not_installed, Snackbar.LENGTH_LONG).show()
                         }
                     }
                 })
@@ -195,7 +195,7 @@ class ConfigurationsFragment : DaggerFragment(), SearchView.OnQueryTextListener,
                 return true
             }
             R.id.action_change_scope -> {
-                val args = ConfigurationsFragmentArgs.fromBundle(arguments!!)
+                val args = ConfigurationsFragmentArgs.fromBundle(requireArguments())
                 ScopeFragment.newInstance(args.applicationId).show(childFragmentManager, null)
                 return true
             }

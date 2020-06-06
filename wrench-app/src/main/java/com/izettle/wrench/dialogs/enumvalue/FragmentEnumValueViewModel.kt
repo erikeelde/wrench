@@ -20,7 +20,7 @@ class FragmentEnumValueViewModel
         configurationDao.getConfiguration(configurationId)
     }
 
-    internal val selectedConfigurationValueLiveData: LiveData<WrenchConfigurationValue>  by lazy {
+    internal val selectedConfigurationValueLiveData: LiveData<WrenchConfigurationValue> by lazy {
         configurationValueDao.getConfigurationValue(configurationId, scopeId)
     }
 

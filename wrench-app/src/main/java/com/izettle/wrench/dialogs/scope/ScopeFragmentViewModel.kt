@@ -3,9 +3,9 @@ package com.izettle.wrench.dialogs.scope
 import android.database.sqlite.SQLiteException
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
 import com.izettle.wrench.database.WrenchScope
 import com.izettle.wrench.database.WrenchScopeDao
-import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 import java.util.*
 import javax.inject.Inject
@@ -28,7 +28,7 @@ class ScopeFragmentViewModel
     }
 
     internal fun selectScope(wrenchScope: WrenchScope) {
-        GlobalScope.launch {
+        viewModelScope.launch {
             wrenchScope.timeStamp = Date()
             scopeDao.update(wrenchScope)
         }
@@ -36,7 +36,7 @@ class ScopeFragmentViewModel
 
     @Throws(SQLiteException::class)
     internal fun createScope(scopeName: String) {
-        GlobalScope.launch {
+        viewModelScope.launch {
             val wrenchScope = WrenchScope()
             wrenchScope.name = scopeName
             wrenchScope.applicationId = applicationId
@@ -45,7 +45,7 @@ class ScopeFragmentViewModel
     }
 
     internal fun removeScope(scope: WrenchScope) {
-        GlobalScope.launch {
+        viewModelScope.launch {
             scopeDao.delete(scope)
         }
     }

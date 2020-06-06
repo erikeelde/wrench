@@ -9,7 +9,7 @@ import com.izettle.wrench.database.WrenchApplication
 import kotlinx.android.extensions.LayoutContainer
 import kotlinx.android.synthetic.main.application_list_item.*
 
-class ApplicationViewHolder(override val containerView: View) : RecyclerView.ViewHolder(containerView), LayoutContainer {
+internal class ApplicationViewHolder(override val containerView: View) : RecyclerView.ViewHolder(containerView), LayoutContainer {
 
     fun bindTo(application: WrenchApplication) {
         try {

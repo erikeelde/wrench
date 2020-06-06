@@ -29,7 +29,7 @@ class EnumValueFragment : DaggerDialogFragment(), PredefinedValueRecyclerViewAda
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
         binding = FragmentEnumValueBinding.inflate(LayoutInflater.from(context))
 
-        val args = EnumValueFragmentArgs.fromBundle(arguments!!)
+        val args = EnumValueFragmentArgs.fromBundle(requireArguments())
 
         viewModel.init(args.configurationId, args.scopeId)
 
@@ -55,7 +55,7 @@ class EnumValueFragment : DaggerDialogFragment(), PredefinedValueRecyclerViewAda
             }
         })
 
-        return AlertDialog.Builder(activity!!)
+        return AlertDialog.Builder(requireActivity())
                 .setTitle(".")
                 .setView(binding.root)
                 .setNegativeButton(R.string.revert

@@ -7,7 +7,7 @@ import androidx.recyclerview.widget.DiffUtil
 import com.izettle.wrench.R
 import com.izettle.wrench.database.WrenchApplication
 
-class ApplicationAdapter : PagedListAdapter<WrenchApplication, ApplicationViewHolder>(DIFF_CALLBACK) {
+internal class ApplicationAdapter : PagedListAdapter<WrenchApplication, ApplicationViewHolder>(DIFF_CALLBACK) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ApplicationViewHolder {
         return ApplicationViewHolder(LayoutInflater.from(parent.context).inflate(R.layout.application_list_item, parent, false))

@@ -14,7 +14,7 @@ data class WrenchApplication constructor(
 
         @ColumnInfo(name = ApplicationTable.COL_PACK_NAME)
         var packageName: String,
-        
+
         @ColumnInfo(name = ApplicationTable.COL_APP_LABEL)
         var applicationLabel: String
 )

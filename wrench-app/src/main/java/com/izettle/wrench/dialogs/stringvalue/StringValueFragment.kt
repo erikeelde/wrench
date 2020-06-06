@@ -25,7 +25,7 @@ class StringValueFragment : DaggerDialogFragment() {
 
         binding = FragmentStringValueBinding.inflate(LayoutInflater.from(context))
 
-        val args = StringValueFragmentArgs.fromBundle(arguments!!)
+        val args = StringValueFragmentArgs.fromBundle(requireArguments())
 
         viewModel.init(args.configurationId, args.scopeId)
 

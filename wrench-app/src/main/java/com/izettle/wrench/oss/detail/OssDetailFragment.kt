@@ -34,7 +34,7 @@ class OssDetailFragment : DaggerDialogFragment() {
 
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
 
-        val ossDetailFragmentArgs = OssDetailFragmentArgs.fromBundle(arguments!!)
+        val ossDetailFragmentArgs = OssDetailFragmentArgs.fromBundle(requireArguments())
 
         binding = FragmentOssDetailBinding.inflate(LayoutInflater.from(context))
 
@@ -45,7 +45,7 @@ class OssDetailFragment : DaggerDialogFragment() {
             LinkifyCompat.addLinks(binding.text, Linkify.WEB_URLS)
         })
 
-        return AlertDialog.Builder(activity!!)
+        return AlertDialog.Builder(requireActivity())
                 .setTitle(licenceMetadata.dependency)
                 .setView(binding.root)
                 .setPositiveButton("dismiss") { _, _ ->

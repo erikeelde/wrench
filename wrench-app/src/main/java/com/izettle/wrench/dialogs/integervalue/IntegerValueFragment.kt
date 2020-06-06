@@ -23,7 +23,7 @@ class IntegerValueFragment : DaggerDialogFragment() {
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
         val view = LayoutInflater.from(requireContext()).inflate(R.layout.fragment_integer_value, null)
 
-        val args = IntegerValueFragmentArgs.fromBundle(arguments!!)
+        val args = IntegerValueFragmentArgs.fromBundle(requireArguments())
 
         viewModel.init(args.configurationId, args.scopeId)
 

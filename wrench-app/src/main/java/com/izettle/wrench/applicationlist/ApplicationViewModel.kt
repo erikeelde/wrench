@@ -11,8 +11,8 @@ import com.izettle.wrench.database.WrenchApplication
 import com.izettle.wrench.database.WrenchApplicationDao
 import javax.inject.Inject
 
-class ApplicationViewModel
-@Inject internal constructor(applicationDao: WrenchApplicationDao) : ViewModel() {
+internal class ApplicationViewModel
+@Inject constructor(applicationDao: WrenchApplicationDao) : ViewModel() {
 
     private val mediatedApplications: MediatorLiveData<PagedList<WrenchApplication>>
 

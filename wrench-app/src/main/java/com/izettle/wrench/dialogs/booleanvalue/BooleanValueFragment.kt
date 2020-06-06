@@ -11,8 +11,6 @@ import androidx.lifecycle.ViewModelProvider
 import com.izettle.wrench.R
 import dagger.android.support.DaggerDialogFragment
 import kotlinx.android.synthetic.main.fragment_boolean_value.view.*
-import kotlinx.coroutines.GlobalScope
-import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 class BooleanValueFragment : DaggerDialogFragment() {
@@ -25,7 +23,7 @@ class BooleanValueFragment : DaggerDialogFragment() {
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
         val view = LayoutInflater.from(requireContext()).inflate(R.layout.fragment_boolean_value, null)
 
-        val args = BooleanValueFragmentArgs.fromBundle(arguments!!)
+        val args = BooleanValueFragmentArgs.fromBundle(requireArguments())
 
         viewModel.init(args.configurationId, args.scopeId)
 
@@ -61,15 +59,11 @@ class BooleanValueFragment : DaggerDialogFragment() {
         })
 
         view.revert.setOnClickListener {
-            GlobalScope.launch {
-                viewModel.revertClick()
-            }
+            viewModel.revertClick()
         }
 
         view.save.setOnClickListener {
-            GlobalScope.launch {
-                viewModel.saveClick(view.value.isChecked.toString())
-            }
+            viewModel.saveClick(view.value.isChecked.toString())
         }
 
         return AlertDialog.Builder(requireActivity())

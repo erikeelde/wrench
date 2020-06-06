@@ -101,13 +101,13 @@ class FragmentBooleanValueViewModel
         }
     }
 
-    internal suspend fun saveClick(value: String) = coroutineScope {
+    internal fun saveClick(value: String) {
         viewModelScope.launch {
             channel.send(ViewAction.SaveAction(value))
         }
     }
 
-    internal suspend fun revertClick() = coroutineScope {
+    internal fun revertClick() {
         viewModelScope.launch {
             channel.send(ViewAction.RevertAction)
         }

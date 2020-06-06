@@ -12,7 +12,7 @@ import com.izettle.wrench.databinding.FragmentApplicationsBinding
 import dagger.android.support.DaggerFragment
 import javax.inject.Inject
 
-class ApplicationsFragment : DaggerFragment() {
+internal class ApplicationsFragment : DaggerFragment() {
 
     @Inject
     lateinit var viewModelFactory: ViewModelProvider.Factory
@@ -33,10 +33,10 @@ class ApplicationsFragment : DaggerFragment() {
         fragmentApplicationsBinding.list.layoutManager = LinearLayoutManager(requireContext())
 
         val adapter = ApplicationAdapter()
-        model.applications.observe(this, Observer { adapter.submitList(it) })
+        model.applications.observe(viewLifecycleOwner, Observer { adapter.submitList(it) })
         fragmentApplicationsBinding.list.adapter = adapter
 
-        model.isListEmpty.observe(this, Observer { isEmpty ->
+        model.isListEmpty.observe(viewLifecycleOwner, Observer { isEmpty ->
             val animator = fragmentApplicationsBinding.animator
             if (isEmpty == null || isEmpty) {
                 animator.displayedChild = animator.indexOfChild(fragmentApplicationsBinding.noApplicationsEmptyView)
