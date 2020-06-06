@@ -27,11 +27,11 @@ android {
 }
 
 dependencies {
-    testImplementation(Libs.junit)
+    testImplementation("junit:junit:4.13")
 //    implementation Libs.wrench.core
-    implementation(Libs.wrench.core)
-    implementation(Libs.support.annotations)
-    api(Libs.lifecycle.core)
+    implementation("com.izettle.wrench:wrench-core:0.3")
+    implementation("androidx.annotation:annotation:1.1.0")
+    api("androidx.lifecycle:lifecycle-livedata-core:2.2.0")
 }
 
 // The api of this module should be discussed before any potential release

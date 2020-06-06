@@ -39,8 +39,8 @@ android {
 }
 
 dependencies {
-    testImplementation(Libs.junit)
-    implementation(Libs.support.annotations)
+    testImplementation("junit:junit:4.13")
+    implementation("androidx.annotation:annotation:1.1.1")
 }
 
 

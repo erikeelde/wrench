@@ -2,14 +2,18 @@ import com.github.benmanes.gradle.versions.updates.DependencyUpdatesTask
 // Top-level build file where you can add configuration options common to all sub-projects/modules.
 
 buildscript {
-    Repos.addRepos(repositories)
+    repositories {
+        google()
+        mavenCentral()
+        jcenter()
+    }
 
     dependencies {
 
-        classpath(Libs.android_gradle_plugin)
-        classpath(Libs.kotlin.plugin)
-        classpath(Libs.navigation.safeArgsPlugin)
-        classpath(Libs.oss.plugin)
+        classpath("com.android.tools.build:gradle:4.1.0-alpha10")
+        classpath("org.jetbrains.kotlin:kotlin-gradle-plugin:1.3.72")
+        classpath("androidx.navigation:navigation-safe-args-gradle-plugin:2.2.2")
+        classpath("com.google.gms:oss-licenses:0.9.2")
     }
 }
 
@@ -20,7 +24,11 @@ plugins {
 }
 
 allprojects {
-    Repos.addRepos(repositories)
+    repositories {
+        google()
+        mavenCentral()
+        jcenter()
+    }
 }
 
 task<Delete>("clean") {

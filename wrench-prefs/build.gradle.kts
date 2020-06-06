@@ -34,18 +34,18 @@ android {
 }
 
 dependencies {
-    testImplementation(Libs.junit)
+    testImplementation("junit:junit:4.13")
 
-    testImplementation(Libs.androidTestingSupportLibrary.core)
-    testImplementation(Libs.androidTestingSupportLibrary.truth)
-    testImplementation(Libs.androidTestingSupportLibrary.rules)
-    testImplementation(Libs.androidTestingSupportLibrary.runner)
-    testImplementation(Libs.androidTestingSupportLibrary.junit)
-    testImplementation(Libs.robolectric)
+    testImplementation("androidx.test:core:1.2.0")
+    testImplementation("androidx.test.ext:truth:1.2.0")
+    testImplementation("androidx.test:rules:1.2.0")
+    testImplementation("androidx.test:runner:1.2.0")
+    testImplementation("androidx.test.ext:junit:1.1.1")
+    testImplementation("org.robolectric:robolectric:4.3.1")
 
-    implementation(Libs.wrench.core)
-    implementation(Libs.support.annotations)
-    implementation(Libs.kotlin.stdlib)
+    implementation("com.izettle.wrench:wrench-core:0.3")
+    implementation("androidx.annotation:annotation:1.1.0")
+    implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk7:1.3.72")
     implementation("androidx.core:core-ktx:1.3.0")
 }
 

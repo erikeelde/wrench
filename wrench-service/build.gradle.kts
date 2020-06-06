@@ -34,17 +34,17 @@ android {
 }
 
 dependencies {
-    testImplementation(Libs.junit)
-    testImplementation(Libs.mockito.core)
-    testImplementation(Libs.kotlin.stdlib)
+    testImplementation("junit:junit:4.13")
+    testImplementation("org.mockito:mockito-core:3.3.3")
+    testImplementation("org.jetbrains.kotlin:kotlin-stdlib-jdk7:1.3.72")
 
-    implementation(Libs.wrench.core)
+    implementation("com.izettle.wrench:wrench-core:0.3")
     debugImplementation(project(":wrench-service-prefs"))
     releaseImplementation(project(":wrench-service-prefs-no-op"))
-    implementation(Libs.support.annotations)
+    implementation("androidx.annotation:annotation:1.1.0")
 
     api(project(":wrench-service-provider"))
-    implementation("androidx.core:core-ktx:+")
+    implementation("androidx.core:core-ktx:1.4.0-alpha01")
 }
 
 // The api of this module should be discussed before any potential release

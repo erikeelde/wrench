@@ -8,7 +8,7 @@ import com.izettle.wrench.database.WrenchConfigurationWithValues
 import com.izettle.wrench.database.WrenchScope
 import com.izettle.wrench.databinding.ConfigurationListItemBinding
 
-class ConfigurationViewHolder internal constructor(
+internal class ConfigurationViewHolder internal constructor(
         val binding: ConfigurationListItemBinding,
         val listener: ConfigurationRecyclerViewAdapter.Listener) : RecyclerView.ViewHolder(binding.root) {
 

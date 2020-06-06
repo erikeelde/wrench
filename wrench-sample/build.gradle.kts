@@ -57,31 +57,31 @@ android {
 }
 
 dependencies {
-    testImplementation(Libs.mockito.core)
+    testImplementation("org.mockito:mockito-core:3.3.3")
 
-    testImplementation(Libs.androidTestingSupportLibrary.core)
-    testImplementation(Libs.androidTestingSupportLibrary.truth)
-    testImplementation(Libs.androidTestingSupportLibrary.rules)
-    testImplementation(Libs.androidTestingSupportLibrary.runner)
-    testImplementation(Libs.androidTestingSupportLibrary.junit)
-    testImplementation(Libs.robolectric)
+    testImplementation("androidx.test:core:1.2.0")
+    testImplementation("androidx.test.ext:truth:1.2.0")
+    testImplementation("androidx.test:rules:1.2.0")
+    testImplementation("androidx.test:runner:1.2.0")
+    testImplementation("androidx.test.ext:junit:1.1.1")
+    testImplementation("org.robolectric:robolectric:4.3.1")
 
-    implementation(Libs.support.app_compat)
-    implementation(Libs.support.design)
-    implementation(Libs.support.coordinatorlayout)
-    implementation(Libs.constraint_layout)
-    implementation(Libs.lifecycle.extensions)
+    implementation("androidx.appcompat:appcompat:1.1.0")
+    implementation("com.google.android.material:material:1.2.0-alpha01")
+    implementation("androidx.coordinatorlayout:coordinatorlayout:1.1.0")
+    implementation("androidx.constraintlayout:constraintlayout:2.0.0-beta3")
+    implementation("androidx.lifecycle:lifecycle-extensions:2.2.0")
 
-    implementation(Libs.navigation.fragmentKotlin)
-    implementation(Libs.navigation.uiKotlin)
+    implementation("androidx.navigation:navigation-fragment-ktx:2.2.2")
+    implementation("androidx.navigation:navigation-ui-ktx:2.2.2")
 
 //    implementation (Libs.wrench.core)
 //    debugImplementation (Libs.wrench.prefs)
 //    releaseImplementation (Libs.wrench.prefs_no_op)
 
-    implementation(Libs.wrench.core)
-    debugImplementation(Libs.wrench.prefs)
-    releaseImplementation(Libs.wrench.prefs_no_op)
+    implementation("com.izettle.wrench:wrench-core:0.3")
+    debugImplementation("com.izettle.wrench:wrench-prefs:0.3")
+    releaseImplementation("com.izettle.wrench:wrench-prefs-no-op:0.3")
 
     implementation(project(":wrench-livedata"))
 
@@ -89,14 +89,14 @@ dependencies {
     debugImplementation(project(":wrench-service-prefs"))
     releaseImplementation(project(":wrench-service-prefs-no-op"))
 
-    implementation(Libs.kotlin.stdlib)
-    implementation(Libs.kotlin.coroutinesAndroid)
+    implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk7:1.3.72")
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.3.7")
 
-    implementation(Libs.dagger.runtime)
-    kapt(Libs.dagger.compiler)
-    implementation(Libs.dagger.androidSupport)
-    kapt(Libs.dagger.androidProcessor)
+    implementation("com.google.dagger:dagger:2.28")
+    kapt("com.google.dagger:dagger-compiler:2.28")
+    implementation("com.google.dagger:dagger-android-support:2.28")
+    kapt("com.google.dagger:dagger-android-processor:2.28")
 
-    implementation(Libs.oss.runtime)
-    implementation("androidx.core:core-ktx:+")
+    implementation("com.google.android.gms:play-services-oss-licenses:17.0.0")
+    implementation("androidx.core:core-ktx:1.4.0-alpha01")
 }

@@ -34,11 +34,11 @@ android {
 }
 
 dependencies {
-    testImplementation(Libs.junit)
-    testImplementation(Libs.mockito.core)
+    testImplementation("junit:junit:4.13")
+    testImplementation("org.mockito:mockito-core:3.3.3")
 
-    implementation(Libs.wrench.core)
-    implementation(Libs.wrench.prefs_no_op)
+    implementation("com.izettle.wrench:wrench-core:0.3")
+    implementation("com.izettle.wrench:wrench-prefs-no-op:0.3")
     api(project(":wrench-service-provider"))
 }
 
